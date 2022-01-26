@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { myQuestions as questions } from "./helpers/helpers";
+import Questions from "./components/Questions";
 import "./App.css";
 
 function App() {
@@ -32,14 +33,10 @@ function App() {
         </div>
       ) : (
         <React.Fragment>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className="question-text">
-              {questions[currentQuestion].question}
-            </div>
-          </div>
+          <Questions
+            currentQuestion={currentQuestion}
+            questions={questions}
+          ></Questions>
           <div className="answer-section">
             {questions[currentQuestion].answerOptions.map((answerOption) => {
               return (
