@@ -32,6 +32,13 @@ function App() {
     }
   };
 
+  const restartHandler = () => {
+    setPlayable(true);
+    setScore(0);
+    setCurrentQuestion(0);
+    setResponses([]);
+  };
+
   return (
     <div className="app">
       {!playable ? (
@@ -39,6 +46,7 @@ function App() {
           score={score}
           questions={questions}
           responses={responses}
+          restart={restartHandler}
         ></Score>
       ) : (
         <React.Fragment>

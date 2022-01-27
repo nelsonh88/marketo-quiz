@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Score = ({ score, questions, responses }) => {
+const Score = ({ score, questions, responses, restart }) => {
   const [reviewAnswers, setReviewAnswers] = useState(false);
   const reviewAnswersHandler = () => {
     setReviewAnswers(true);
@@ -17,6 +17,7 @@ const Score = ({ score, questions, responses }) => {
               return <li key={i}>{response.toString()}</li>;
             })}
           </ol>
+          <button onClick={restart}>Retake Practice Quiz</button>
         </div>
       ) : (
         <div className="score-section">
@@ -24,6 +25,7 @@ const Score = ({ score, questions, responses }) => {
             You scored {score} out of {questions.length}
           </p>
           <button onClick={reviewAnswersHandler}>Review Answers</button>
+          <button onClick={restart}>Retake Practice Quiz</button>
         </div>
       )}
     </div>
