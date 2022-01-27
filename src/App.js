@@ -1,36 +1,45 @@
 import React, { useState } from "react";
 import { myQuestions as questions } from "./helpers/helpers";
 import Questions from "./components/Questions";
+import Score from "./components/Score";
+
 import "./App.css";
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [responses, setResponses] = useState([]);
+  const [playable, setPlayable] = useState(true);
 
   const clickAnswerHandler = (isCorrect) => {
     if (isCorrect) {
       setScore((previousValue) => {
         return previousValue + 1;
       });
-      alert("You are correct");
     }
+
+    setResponses((previousValue) => {
+      let value = isCorrect ? "Correct" : "Wrong";
+      return [...previousValue, value];
+    });
 
     const nextQuestion = currentQuestion + 1;
 
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
+      setPlayable(false);
     }
   };
 
   return (
     <div className="app">
-      {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
-        </div>
+      {!playable ? (
+        <Score
+          score={score}
+          questions={questions}
+          responses={responses}
+        ></Score>
       ) : (
         <React.Fragment>
           <Questions
@@ -38,9 +47,10 @@ function App() {
             questions={questions}
           ></Questions>
           <div className="answer-section">
-            {questions[currentQuestion].answerOptions.map((answerOption) => {
+            {questions[currentQuestion].answerOptions.map((answerOption, i) => {
               return (
                 <button
+                  key={i}
                   onClick={() => clickAnswerHandler(answerOption.isCorrect)}
                 >
                   {answerOption.answerText}
