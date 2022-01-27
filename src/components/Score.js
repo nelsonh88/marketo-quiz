@@ -9,18 +9,14 @@ const Score = ({ score, questions, responses }) => {
   return (
     <div>
       {reviewAnswers ? (
-        <div>
+        <div className="responses">
           <p>Review your answers below:</p>
 
-          <ul>
+          <ol>
             {responses.map((response, i) => {
-              return (
-                <li key={i}>
-                  #{i + 1}. {response.toString()}
-                </li>
-              );
+              return <li key={i}>{response.toString()}</li>;
             })}
-          </ul>
+          </ol>
         </div>
       ) : (
         <div className="score-section">
