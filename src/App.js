@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { myQuestions as questions } from "./helpers/helpers";
 import Questions from "./components/Questions";
 import Score from "./components/Score";
+import StartQuiz from "./components/StartQuiz";
 
 import "./App.css";
 
@@ -9,7 +10,9 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [responses, setResponses] = useState([]);
-  const [playable, setPlayable] = useState(true);
+  const [playable, setPlayable] = useState(false);
+  const [startQuiz, setStartQuiz] = useState(false);
+  let showScore;
 
   const clickAnswerHandler = (isCorrect) => {
     if (isCorrect) {
@@ -32,6 +35,11 @@ function App() {
     }
   };
 
+  const startQuizHandler = () => {
+    setStartQuiz(true);
+    restartHandler();
+  };
+
   const restartHandler = () => {
     setPlayable(true);
     setScore(0);
@@ -41,14 +49,18 @@ function App() {
 
   return (
     <div className="app">
-      {!playable ? (
+      {!startQuiz && <StartQuiz start={startQuizHandler}></StartQuiz>}
+
+      {!playable && startQuiz && (
         <Score
           score={score}
           questions={questions}
           responses={responses}
           restart={restartHandler}
         ></Score>
-      ) : (
+      )}
+
+      {playable && (
         <React.Fragment>
           <Questions
             currentQuestion={currentQuestion}
