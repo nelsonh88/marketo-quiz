@@ -12,18 +12,17 @@ function App() {
   const [responses, setResponses] = useState([]);
   const [playable, setPlayable] = useState(false);
   const [startQuiz, setStartQuiz] = useState(false);
-  let showScore;
 
-  const clickAnswerHandler = (isCorrect) => {
-    if (isCorrect) {
+  const clickAnswerHandler = (userAnswer) => {
+    console.log(userAnswer);
+    if (userAnswer.isCorrect) {
       setScore((previousValue) => {
         return previousValue + 1;
       });
     }
 
     setResponses((previousValue) => {
-      let value = isCorrect ? "Correct" : "Wrong";
-      return [...previousValue, value];
+      return [...previousValue, userAnswer];
     });
 
     const nextQuestion = currentQuestion + 1;
@@ -71,7 +70,7 @@ function App() {
               return (
                 <button
                   key={i}
-                  onClick={() => clickAnswerHandler(answerOption.isCorrect)}
+                  onClick={() => clickAnswerHandler(answerOption)}
                 >
                   {answerOption.answerText}
                 </button>
