@@ -5,11 +5,13 @@ const Score = ({ score, questions, responses, restart }) => {
   const reviewAnswersHandler = () => {
     setReviewAnswers(true);
   };
-  console.log(questions);
 
   let userAnswers = responses.map((response, i) => {
     return (
-      <li className={response.isCorrect ? "correct" : "incorrect"} key={i}>
+      <li
+        className={response.isCorrect ? "correct" : "incorrect"}
+        key={response}
+      >
         <strong>Your Answer:</strong> {response.answerText}
       </li>
     );
@@ -17,10 +19,12 @@ const Score = ({ score, questions, responses, restart }) => {
 
   let showQuestion = questions.map((question, i) => {
     return (
-      <p>
-        {i + 1}. {question.question}
+      <React.Fragment key={i}>
+        <p key={question.question}>
+          {i + 1}. {question.question}
+        </p>
         <ul>{userAnswers[i]}</ul>
-      </p>
+      </React.Fragment>
     );
   });
 
@@ -31,11 +35,6 @@ const Score = ({ score, questions, responses, restart }) => {
           <h2>Review your answers below:</h2>
           {showQuestion}
 
-          {/* <ol>
-            {responses.map((response, i) => {
-              return <li key={i}>{response.toString()}</li>;
-            })}
-          </ol> */}
           <button onClick={restart}>Retake Practice Quiz</button>
         </div>
       ) : (

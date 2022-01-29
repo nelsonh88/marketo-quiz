@@ -14,7 +14,6 @@ function App() {
   const [startQuiz, setStartQuiz] = useState(false);
 
   const clickAnswerHandler = (userAnswer) => {
-    console.log(userAnswer);
     if (userAnswer.isCorrect) {
       setScore((previousValue) => {
         return previousValue + 1;
