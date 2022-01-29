@@ -28,7 +28,7 @@ const Score = ({ score, questions, responses, restart }) => {
     <div>
       {reviewAnswers ? (
         <div className="responses">
-          <p>Review your answers below:</p>
+          <h2>Review your answers below:</h2>
           {showQuestion}
 
           {/* <ol>
@@ -40,9 +40,9 @@ const Score = ({ score, questions, responses, restart }) => {
         </div>
       ) : (
         <div className="score-section">
-          <p>
+          <h2>
             You scored {score} out of {questions.length}
-          </p>
+          </h2>
           <button onClick={reviewAnswersHandler}>Review Answers</button>
           <button onClick={restart}>Retake Practice Quiz</button>
         </div>

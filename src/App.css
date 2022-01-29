@@ -19,18 +19,23 @@ body {
   min-height: 100vh;
 }
 
+h1 {
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 .app {
   background-color: #252d4a;
   width: 300px;
   border-radius: 15px;
   padding: 40px 20px 20px 20px;
   box-shadow: 10px 10px 42px 0px rgb(0 0 0 / 75%);
-}
-
-.start-quiz h1 {
-  text-align: center;
-  font-size: 24px;
-  line-height: 1.5;
 }
 
 .start-quiz p {
@@ -92,7 +97,7 @@ body {
 }
 
 .responses p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
