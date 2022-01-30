@@ -40,7 +40,8 @@ const Score = ({ score, questions, responses, restart }) => {
       ) : (
         <div className="score-section">
           <h2>
-            You scored {score} out of {questions.length}
+            You scored {score} out of {questions.length}:{" "}
+            {Math.round((score / questions.length) * 100)}%
           </h2>
           <button onClick={reviewAnswersHandler}>Review Answers</button>
           <button onClick={restart}>Retake Practice Quiz</button>

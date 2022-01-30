@@ -47,4 +47,27 @@ export const myQuestions = [
       },
     ],
   },
+  {
+    question:
+      "You want to track a gated piece of content on your company website for number of form fills and new names. Which channel would you select?",
+
+    answerOptions: [
+      {
+        answerText: "Website",
+        isCorrect: false,
+      },
+      {
+        answerText: "Web form",
+        isCorrect: true,
+      },
+      {
+        answerText: "Default",
+        isCorrect: false,
+      },
+      {
+        answerText: "Engagement",
+        isCorrect: false,
+      },
+    ],
+  },
 ];
